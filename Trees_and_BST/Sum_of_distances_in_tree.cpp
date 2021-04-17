@@ -75,8 +75,8 @@ public:
             dist_sum[i] = 0;
         }
         subtreeSize(0, N, adj, tree_size, visited);
-        for(int i = 0; i < N; i++)
-            cout<<tree_size[i]<< " ";
+        //for(int i = 0; i < N; i++)
+        //    cout<<tree_size[i]<< " ";
         dist_sum[0] = level_order(0, adj, visited1);
         level_order1(N, 0, adj, visited2, dist_sum, tree_size);
         vector<int> res(dist_sum, dist_sum + N);
