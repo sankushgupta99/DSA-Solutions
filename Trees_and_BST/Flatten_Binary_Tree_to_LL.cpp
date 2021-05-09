@@ -30,3 +30,31 @@ public:
         flattenUtil(root);
     }
 };
+
+//OR
+
+class Solution
+{
+    public:
+    Node* prev = NULL;
+    void flatten(Node *root)
+    {
+        if(root == NULL)
+        return;
+        
+        Node* left = root->left;
+        Node* right = root->right;
+        
+        if(prev == NULL)
+        prev = root;
+        else
+        prev->right = root;
+        
+        root->left = NULL;
+        root->right = NULL;
+        prev = root;
+        
+        flatten(left);
+        flatten(right);
+    }
+};
