@@ -1,4 +1,4 @@
-lass Solution
+class Solution
 {
 public:
     int graph[1001][1001];
