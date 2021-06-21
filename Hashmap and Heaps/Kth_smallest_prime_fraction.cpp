@@ -1,3 +1,30 @@
+#define pdp pair<double, pair<int, int>>
+class Solution {
+public:
+    vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
+        int n = arr.size();
+        priority_queue<pdp, vector<pdp>, greater<pdp>> pq;
+        
+        for(int i = 0; i < n-1; i++){
+            pq.push({((double)arr[i] / arr[n-1]), {i, n-1}});
+        }
+        
+        int i, j;
+        while(k){
+            pdp curr = pq.top(); pq.pop(); 
+            i = curr.second.first;
+            j = curr.second.second;
+            if(i < j-1)
+                pq.push({((double)arr[i] / arr[j-1]), {i, j-1}});
+            k--;
+        }
+        
+        return {arr[i], arr[j]};
+    }
+};
+
+//OR
+
 #define vi vector<int>
 class Solution {
 public:
