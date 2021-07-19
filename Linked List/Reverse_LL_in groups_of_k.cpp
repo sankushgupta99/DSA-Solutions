@@ -21,3 +21,41 @@ class Solution
         return res;
     }
 };
+
+//OR
+
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        int count = 0;
+        ListNode* curr = head;
+        while(curr != NULL){
+            count++;
+            curr = curr->next;
+        }
+        
+        ListNode* prev = NULL;
+        curr = head;
+        
+        for(int i = 0; i < count / k; i++){
+            ListNode* prev_grp_last = prev;
+            ListNode* this_grp_first = curr;
+            
+            for(int j = 0; j < k; j++){
+                ListNode* currp1 = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = currp1;
+            }
+            
+            ListNode* this_grp_last = prev;
+            ListNode* next_grp_first = curr;
+            
+            this_grp_first->next = next_grp_first;
+            (prev_grp_last == NULL) ? head = this_grp_last : prev_grp_last->next = this_grp_last;
+            prev = this_grp_first;
+        }
+        
+        return head;
+    }
+};
