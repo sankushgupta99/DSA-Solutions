@@ -14,7 +14,6 @@ public:
         return arr;
     }
     
-    
     /** Returns a random shuffling of the array. */
     vector<int> shuffle() {
         int n = arr.size();
